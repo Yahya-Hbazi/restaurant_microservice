@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package livreur;
+import "restaurant.proto";
+
+message Livreur {
+  string id = 1;
+  string name = 2;
+  Restaurant restaurant = 3;
+}
+
+message GetLivreurRequest {
+  string livreur_id = 1;
+}
+
+message GetLivreurResponse {
+  Livreur livreur = 1;
+}
+
+message SearchLivreursRequest {
+  string query = 1;
+}
+
+message SearchLivreursResponse {
+  repeated Livreur livreurs = 1;
+}
+
+message CreateLivreurRequest {
+  string id = 1;
+  string name = 2;
+  Restaurant restaurant = 3;
+}
+
+message CreateLivreurResponse {
+  Livreur livreur = 1;
+}
+
+message DeleteLivreurRequest {
+  string livreur_id = 1;
+}
+
+message DeleteLivreurResponse {
+  bool success = 1;
+}
+
+service LivreurService {
+  rpc GetLivreur(GetLivreurRequest) returns (GetLivreurResponse);
+  rpc SearchLivreurs(SearchLivreursRequest) returns (SearchLivreursResponse);
+  rpc CreateLivreur(CreateLivreurRequest) returns (CreateLivreurResponse);
+  rpc DeleteLivreur(DeleteLivreurRequest) returns (DeleteLivreurResponse);
+}
+
+
+
+
+
+
